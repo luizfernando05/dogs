@@ -12,32 +12,43 @@
     animation: scaleUp 0.3s forwards;
 }
 
+.single.photo {
+    grid-template-columns: 1fr;
+    height: auto;
+}
+
 @keyframes scaleUp {
     to {
-            opacity: initial;
-            transform: initial;
-        }
+        opacity: initial;
+        transform: initial;
     }
-    
-    .details {
-        padding: 2rem 2rem 0 2rem;
-    }
-    
-    .img {
-        grid-row: 1/4;
-    }
-    
-    .comments {
-        padding: 0 2rem;
+}
+
+.details {
+    padding: 2rem 2rem 0 2rem;
+}
+
+.single .details {
+    padding: 1rem 0px 0px 0px;
     }
 
-    @media (max-width: 64rem) {
-        .photo {
-            height: auto;
-            max-height: calc(100vh - 4rem);
-            overflow-y: auto;
-            grid-template-columns: minmax(20rem, 40rem);
-        }
+.img {
+    grid-row: 1/4;
+}
+
+.single .img {
+    grid-row: 1;
+    border-radius: 0.4rem;
+    overflow: hidden;
+}
+
+@media (max-width: 64rem) {
+    .photo {
+        height: auto;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+        grid-template-columns: minmax(20rem, 40rem);
+    }
     .img {
         grid-row: 1;
     }
