@@ -7,7 +7,6 @@ const Image = ({ alt, ...props }) => {
   function handleLoad({ target }) {
     setSkeleton(false);
     target.style.opacity = 1;
-
   }
 
   return (
@@ -15,7 +14,7 @@ const Image = ({ alt, ...props }) => {
       {skeleton && <div className={styles.skeleton}></div>}
       <img onLoad={handleLoad} className={styles.img} alt={alt} {...props} />
     </div>
-  )
+  );
 };
 
 export default Image;

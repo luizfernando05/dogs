@@ -24,8 +24,8 @@ const LoginPasswordLost = () => {
   }
 
   return (
-    <section>
-      <Head title='Recuperar senha' />
+    <section className="animeLeft">
+      <Head title="Perdeu a senha" />
       <h1 className="title">Perdeu a senha?</h1>
       {data ? (
         <p style={{ color: '#4c1' }}>{data}</p>

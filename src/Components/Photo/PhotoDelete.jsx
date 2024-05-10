@@ -8,18 +8,26 @@ const PhotoDelete = ({ id }) => {
 
   async function handleClick() {
     const confirm = window.confirm('Tem certeza que deseja deletar?');
-    if(confirm) {
+    if (confirm) {
       const { url, options } = PHOTO_DELETE(id);
       const { response } = await request(url, options);
-      if(response.ok) window.location.reload();
+      if (response.ok) window.location.reload();
     }
   }
 
   return (
     <>
-        {loading ? <button className={styles.delete} disabled>Deletar</button> : <button onClick={handleClick} className={styles.delete}>Deletar</button>}
+      {loading ? (
+        <button className={styles.delete} disabled>
+          Deletar
+        </button>
+      ) : (
+        <button onClick={handleClick} className={styles.delete}>
+          Deletar
+        </button>
+      )}
     </>
-  )
-}
+  );
+};
 
 export default PhotoDelete;

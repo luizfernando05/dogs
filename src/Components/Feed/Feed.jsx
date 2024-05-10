@@ -11,10 +11,10 @@ const Feed = ({ user }) => {
   React.useEffect(() => {
     let wait = false;
     function infiniteScroll() {
-      if(infinite) {
+      if (infinite) {
         const scroll = window.scrollY;
         const height = document.body.offsetHeight - window.innerHeight;
-        if(scroll > height * 0.75 && !wait ) {
+        if (scroll > height * 0.75 && !wait) {
           setPages((pages) => [...pages, pages.length + 1]);
           wait = true;
           setTimeout(() => {
@@ -29,7 +29,7 @@ const Feed = ({ user }) => {
     return () => {
       window.removeEventListener('wheel', infiniteScroll);
       window.removeEventListener('scroll', infiniteScroll);
-    }
+    };
   }, [infinite]);
 
   return (
@@ -37,25 +37,39 @@ const Feed = ({ user }) => {
       {modalPhoto && (
         <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
       )}
-      {pages.map(page => (
-        <FeedPhotos 
-          key={page} 
-          user={user} 
-          page={page} 
+      {pages.map((page) => (
+        <FeedPhotos
+          key={page}
+          user={user}
+          page={page}
           setModalPhoto={setModalPhoto}
           setInfinite={setInfinite}
         />
       ))}
+      {!infinite && !user && (
+        <p
+          style={{
+            textAlign: 'center',
+            padding: '2rem 0 4rem 0',
+            color: '#888',
+          }}
+        >
+          Não existem mais postagens.
+        </p>
+      )}
     </div>
   );
 };
 
 Feed.defaultProps = {
   user: 0,
-}
+};
 
 Feed.propTypes = {
-  user: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
-}
+  user: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.number.isRequired,
+  ]),
+};
 
 export default Feed;
